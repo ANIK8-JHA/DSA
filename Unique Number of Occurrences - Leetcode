@@ -1,0 +1,22 @@
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int i : arr) {
+            if(max < i) max = i;
+            if(min > i) min = i;
+        }
+        int offset = -min;
+        int range = max - min + 1;
+        int[] count = new int[range];
+        for(int i : arr) count[i + offset]++;
+        boolean[] used = new boolean[arr.length + 1];
+        for(int i : count) {
+            if(i > 0) {
+                if(used[i]) return false;
+                else used[i] = true;
+            }
+        }
+        return true;
+    }
+}
