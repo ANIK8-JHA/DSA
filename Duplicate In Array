@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+
+public class Solution {
+
+	public static int findDuplicate(ArrayList<Integer> arr) {
+
+		//    Write your code here.
+		int n = arr.size() - 1;
+		int sum_of_n = n * (n + 1) / 2;
+		int sum = 0;
+		for(int i : arr) sum += i;
+		return sum - sum_of_n;
+	}
+}
